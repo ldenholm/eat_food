@@ -16,21 +16,14 @@ export class Store {
         return this.state;
     }
 
-<<<<<<< Updated upstream
-    /*  NOTES FOR dispatch() and reduce()
-    Any time we dispatch an action, we are essentially telling
-    the store to update the particular state. So this.state
-    is the result of calling the reduce(), which will loop
-    over all our reducers, create an object property for each one,
-    and bind the value as the result of each reducer function call.
-    */
-=======
     subscribe(fn) {
         this.subscribers = [...this.subscribers, fn];
         this.notify();
+        return () => {
+            this.subscribers = this.subscribers.filter(sub => sub !== fn);
+        }
     }
 
->>>>>>> Stashed changes
     dispatch(action) {
         this.state = this.reduce(this.state, action);
         this.notify();

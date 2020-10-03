@@ -21,6 +21,11 @@ steps:
     npx webpack --config webpack.config.js
   displayName: 'npm install, run webpack'
 
+- task: CopyFiles@2
+  inputs:
+    Contents: 'build/**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'

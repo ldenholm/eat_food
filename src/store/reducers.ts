@@ -1,7 +1,7 @@
 export const initialState = {
     loaded: false,
     loading: false,
-    data: [{ label: "Eat food", complete: false }]
+    data: [{ label: "Eat food", complete: false }],
 };
 
 export function reducer(
@@ -10,7 +10,7 @@ export function reducer(
 ) {
     switch(action.type) {
         case 'ADD_TODO': {
-            // grab the todo (action payload):
+            // grab the todo (in the action payload):
             const todo = action.payload;
             // compose new array by taking previous data, and appending new todo:
             const data = [...state.data, todo];

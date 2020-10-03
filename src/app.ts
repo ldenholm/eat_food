@@ -11,7 +11,7 @@ const reducers = {
   todos: fromStore.reducer
 }
 
-const store = new fromStore.Store({reducers});
+const store = new fromStore.Store(reducers);
 
 button.addEventListener(
   "click",
@@ -24,6 +24,8 @@ button.addEventListener(
       type: 'ADD_TODO',
       payload
     });
+
+    console.log(store.value);
 
     input.value = "";
   },

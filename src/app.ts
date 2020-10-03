@@ -37,3 +37,5 @@ todoList.addEventListener("click", function (event) {
   if (target.nodeName.toLowerCase() === "button") {
   }
 });
+
+store.subscribe(state => console.log('State::::', state));

@@ -6,6 +6,7 @@ export class Store {
 
     constructor(reducers = {}, initialState = {}) {
         // reducers parameter will be default empty object if none supplied as arguments.
+        this.subscribers = [];
         this.reducers = reducers;
         // above gives internal access to reducers from within the store.
         this.state = this.reduce(initialState, {});
@@ -15,6 +16,7 @@ export class Store {
         return this.state;
     }
 
+<<<<<<< Updated upstream
     /*  NOTES FOR dispatch() and reduce()
     Any time we dispatch an action, we are essentially telling
     the store to update the particular state. So this.state
@@ -22,8 +24,23 @@ export class Store {
     over all our reducers, create an object property for each one,
     and bind the value as the result of each reducer function call.
     */
+=======
+    subscribe(fn) {
+        this.subscribers = [...this.subscribers, fn];
+        this.notify();
+    }
+
+>>>>>>> Stashed changes
     dispatch(action) {
         this.state = this.reduce(this.state, action);
+        this.notify();
+    }
+
+    /* any time we call notify() we loop through the subscriber list
+       and pass the new state.
+    */
+    private notify() {
+        this.subscribers.forEach(fn => fn(this.value));
     }
 
     /* reduce() iterates over reducers and passes in state, any actions

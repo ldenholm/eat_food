@@ -9,3 +9,5 @@ npm run start
 ```
 
 Will run on [localhost:8000](localhost:8000) in your browser.
+
+Todo: wrap this inside c# project for CD on azure.
